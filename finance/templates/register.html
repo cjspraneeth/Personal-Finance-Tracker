@@ -1,0 +1,8 @@
+<!-- finance/templates/register.html -->
+<h1>Register</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Renders the form -->
+    <button type="submit">Register</button>
+</form>
+<a href="{% url 'login' %}">Already have an account? Login here</a>

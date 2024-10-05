@@ -1,0 +1,15 @@
+<!-- finance/templates/list_transactions.html -->
+<h1>Your Transactions</h1>
+<ul>
+    {% for transaction in transactions %}
+        <li>
+            {{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} 
+            ({{ transaction.transaction_type }}) 
+            <a href="{% url 'edit_transaction' transaction.id %}">Edit</a>
+            <a href="{% url 'delete_transaction' transaction.id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No transactions found.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_transaction' %}">Add New Transaction</a>

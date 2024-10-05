@@ -1,0 +1,10 @@
+<!-- finance/templates/dashboard.html -->
+<h1>Welcome, {{ user.username }}!</h1>
+<a href="{% url 'add_transaction' %}">Add Transaction</a>
+<a href="{% url 'logout' %}">Logout</a>
+<h2>Your Transactions</h2>
+<ul>
+    {% for transaction in user.transaction_set.all %}
+        <li>{{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} ({{ transaction.transaction_type }})</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+<!-- finance/templates/edit_transaction.html -->
+<h1>Edit Transaction</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Render the form -->
+    <button type="submit">Save Changes</button>
+</form>
+<a href="{% url 'dashboard' %}">Cancel</a>
