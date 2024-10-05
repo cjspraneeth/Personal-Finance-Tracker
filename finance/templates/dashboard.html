@@ -2,9 +2,27 @@
 <h1>Welcome, {{ user.username }}!</h1>
 <a href="{% url 'add_transaction' %}">Add Transaction</a>
 <a href="{% url 'logout' %}">Logout</a>
+
 <h2>Your Transactions</h2>
+
 <ul>
-    {% for transaction in user.transaction_set.all %}
-        <li>{{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} ({{ transaction.transaction_type }})</li>
+    {% for transaction in transactions %}
+        <li>
+            {{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} 
+            ({{ transaction.transaction_type }})
+            <!-- <a class="btn btn-warning" href="{% url 'edit_transaction' transaction.id %}">Edit</a> -->
+              <!-- Edit Button Form -->
+            <form action="{% url 'edit_transaction' transaction.id %}" method="get" style="display:inline;">
+                <button type="submit" class="btn btn-warning">Edit</button>
+            </form>
+
+            <form method="post" action="{% url 'delete_transaction' transaction.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </li>
+    {% empty %}
+        <li>No transactions found.</li>
     {% endfor %}
 </ul>
+

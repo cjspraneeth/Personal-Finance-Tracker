@@ -39,7 +39,8 @@ def logout_view(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    transactions = Transaction.objects.filter(user=request.user)  # Get transactions for the logged-in user
+    return render(request, 'dashboard.html', {'transactions': transactions})
 
 # finance/views.py
 
