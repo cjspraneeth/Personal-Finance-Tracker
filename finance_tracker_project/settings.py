@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'finance',
+    'django.contrib.sites',  # Required for allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',  # Add the Google provider
 
 ]
 
@@ -50,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # Add this line
 ]
 
 ROOT_URLCONF = 'finance_tracker_project.urls'
@@ -128,3 +134,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'  # Redirect here if user is not authenticated
 LOGIN_REDIRECT_URL = '/dashboard/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
+
+SITE_ID = 1  # Set the site ID to the default
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default
+    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
+)
+ACCOUNT_EMAIL_VERIFICATION = "none"  # Adjust based on your needs
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',  # Can also be set to 'offline' for refresh tokens
+        }
+    }
+}
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIALACCOUNT_LOGIN_ON_GET=True
+SOCIALACCOUNT_AUTO_SIGNUP = True
+ACCOUNT_USERNAME_REQUIRED = False
+
+

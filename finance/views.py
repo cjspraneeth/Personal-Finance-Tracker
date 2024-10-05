@@ -10,12 +10,15 @@ from django.contrib.auth import logout
 
 from django.contrib.auth.decorators import login_required
 
+from django.db.models.functions import TruncMonth
+from django.db.models import Sum  # Add this line
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()  # Save the new user
-            login(request, user)  # Log the user in
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # Log the user in
             return redirect('dashboard')  # Redirect to the dashboard
     else:
         form = UserCreationForm()
@@ -39,8 +42,23 @@ def logout_view(request):
 
 @login_required
 def dashboard(request):
-    transactions = Transaction.objects.filter(user=request.user)  # Get transactions for the logged-in user
-    return render(request, 'dashboard.html', {'transactions': transactions})
+    transactions = Transaction.objects.filter(user=request.user)
+    
+    # Calculate total income, expenses, and savings
+    total_income = transactions.filter(transaction_type='income').aggregate(total=Sum('amount'))['total'] or 0
+    total_expenses = transactions.filter(transaction_type='expense').aggregate(total=Sum('amount'))['total'] or 0
+    total_savings = total_income - total_expenses  # Calculate savings
+
+    context = {
+        'transactions': transactions,
+        'data': {
+            'total_income': total_income,
+            'total_expenses': total_expenses,
+            'total_savings': total_savings,
+        },
+    }
+
+    return render(request, 'dashboard.html', context)
 
 # finance/views.py
 
@@ -90,3 +108,36 @@ def delete_transaction(request, transaction_id):
 def list_transactions(request):
     transactions = Transaction.objects.filter(user=request.user)  # Get transactions for the logged-in user
     return render(request, 'list_transactions.html', {'transactions': transactions})
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
+from .models import Transaction
+from datetime import datetime
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.db.models import Sum, Q
+from django.db.models import functions
+from .models import Transaction
+
+@login_required
+def monthly_report(request):
+    # Get the current user's transactions
+    transactions = Transaction.objects.filter(user=request.user)
+
+    # Aggregate income and expenses by month
+    monthly_data = (
+        transactions
+        .annotate(month=functions.TruncMonth('date'))
+        .values('month')
+        .annotate(total_income=Sum('amount', filter=Q(transaction_type='income')),
+                  total_expenses=Sum('amount', filter=Q(transaction_type='expense')))
+        .order_by('month')
+    )
+
+    context = {
+        'monthly_data': monthly_data,
+    }
+    
+    return render(request, 'monthly_report.html', context)

@@ -1,28 +1,103 @@
 <!-- finance/templates/dashboard.html -->
-<h1>Welcome, {{ user.username }}!</h1>
-<a href="{% url 'add_transaction' %}">Add Transaction</a>
-<a href="{% url 'logout' %}">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js Library -->
+    <style>
+        /* Add custom styles for the chart container */
+        #chartContainer {
+            width: 100%; /* Make it responsive */
+            max-width: 600px; /* Limit maximum width */
+            margin: 0 auto; /* Center the chart */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Welcome, {{ user.username }}!</h1>
+        
+        <div class="mb-3">
+            <a href="{% url 'add_transaction' %}" class="btn btn-primary">Add Transaction</a>
+            <a href="{% url 'monthly_report' %}" class="btn btn-info">View Monthly Report</a>
+            <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+            
+        </div>
 
-<h2>Your Transactions</h2>
+        <h2>Your Financial Overview</h2>
+        
+        <!-- Chart container -->
+        <div id="chartContainer">
+            <canvas id="financialChart" width="400" height="300"></canvas>
+        </div>
 
-<ul>
-    {% for transaction in transactions %}
-        <li>
-            {{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} 
-            ({{ transaction.transaction_type }})
-            <!-- <a class="btn btn-warning" href="{% url 'edit_transaction' transaction.id %}">Edit</a> -->
-              <!-- Edit Button Form -->
-            <form action="{% url 'edit_transaction' transaction.id %}" method="get" style="display:inline;">
-                <button type="submit" class="btn btn-warning">Edit</button>
-            </form>
+        <script>
+            var ctx = document.getElementById('financialChart').getContext('2d');
+            var financialChart = new Chart(ctx, {
+                type: 'pie',  // You can change this to 'bar', 'line', etc.
+                data: {
+                    labels: ['Income', 'Expenses', 'Savings'],
+                    datasets: [{
+                        label: 'Financial Overview',
+                        data: [
+                            {{ data.total_income }},
+                            {{ data.total_expenses }},
+                            {{ data.total_savings }}
+                        ],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',  // Income color
+                            'rgba(255, 99, 132, 0.2)',  // Expenses color
+                            'rgba(54, 162, 235, 0.2)'   // Savings color
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Allows height and width to be set independently
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        </script>
 
-            <form method="post" action="{% url 'delete_transaction' transaction.id %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </li>
-    {% empty %}
-        <li>No transactions found.</li>
-    {% endfor %}
-</ul>
+        <h2 class="mt-4">Your Transactions</h2>
 
+        <ul class="list-group">
+            {% for transaction in transactions %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} 
+                    ({{ transaction.transaction_type }})
+
+                    <div>
+                        <!-- Edit Button Form -->
+                        <form action="{% url 'edit_transaction' transaction.id %}" method="get" style="display:inline;">
+                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                        </form>
+
+                        <!-- Delete Button Form -->
+                        <form method="post" action="{% url 'delete_transaction' transaction.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No transactions found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

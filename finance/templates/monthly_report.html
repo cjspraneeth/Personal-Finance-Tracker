@@ -1,0 +1,39 @@
+<!-- finance/templates/monthly_report.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Monthly Income vs Expenses Report</h1>
+        <a href="{% url 'dashboard' %}" class="btn btn-primary mb-3">Back to Dashboard</a>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Total Income</th>
+                    <th>Total Expenses</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in monthly_data %}
+                <tr>
+                    <td>{{ entry.month|date:"F Y" }}</td>
+                    <td>${{ entry.total_income|default:"0.00" }}</td>
+                    <td>${{ entry.total_expenses|default:"0.00" }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No data available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
