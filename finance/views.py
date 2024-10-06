@@ -71,7 +71,7 @@ from .forms import TransactionForm
 @login_required
 def add_transaction(request):
     if request.method == 'POST':
-        form = TransactionForm(request.POST)
+        form = TransactionForm(request.POST,request.FILES)
         if form.is_valid():
             transaction = form.save(commit=False)
             transaction.user = request.user  # Set the user to the currently logged-in user
@@ -86,7 +86,7 @@ def add_transaction(request):
 def edit_transaction(request, transaction_id):
     transaction = get_object_or_404(Transaction, id=transaction_id, user=request.user)
     if request.method == 'POST':
-        form = TransactionForm(request.POST, instance=transaction)
+        form = TransactionForm(request.POST,request.FILES, instance=transaction)
         if form.is_valid():
             form.save()
             return redirect('dashboard')  # Redirect to the dashboard after editing

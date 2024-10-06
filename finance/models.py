@@ -13,6 +13,7 @@ class Transaction(models.Model):
     description = models.TextField()  # Description of the transaction
     transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPE_CHOICES)  # Income or Expense
     category = models.CharField(max_length=100)  # User-defined category as a string
-
+    receipt = models.FileField(upload_to='receipts/', null=True, blank=True)
+    
     def __str__(self):
         return f"{self.transaction_type.capitalize()} - {self.amount} on {self.date} ({self.category})"

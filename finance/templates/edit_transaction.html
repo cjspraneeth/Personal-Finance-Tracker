@@ -1,6 +1,6 @@
 <!-- finance/templates/edit_transaction.html -->
 <h1>Edit Transaction</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Render the form -->
     <button type="submit">Save Changes</button>
