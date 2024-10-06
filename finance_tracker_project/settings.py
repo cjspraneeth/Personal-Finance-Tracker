@@ -15,15 +15,25 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import environ
+import os
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+  # Reads the .env file
+
+
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7+-8pyhc^nl*y8rd89irv_oj+(x@w1656klg1y+v8ri+i1th1g'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -82,12 +92,25 @@ WSGI_APPLICATION = 'finance_tracker_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('MYSQL_DB_NAME') ,  # The name of your database
+        'USER':  env('MYSQL_USER'),  # Your MySQL admin username
+        'PASSWORD': env('MYSQL_PASSWORD'),  # Your MySQL password
+        'HOST':  env('MYSQL_HOST'), # Your MySQL server name
+        'PORT': env('MYSQL_PORT'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',  # Make sure this path is correct
+#     }
+# }
+
 
 
 # Password validation
@@ -135,7 +158,7 @@ LOGIN_URL = '/login/'  # Redirect here if user is not authenticated
 LOGIN_REDIRECT_URL = '/dashboard/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 
-SITE_ID = 1  # Set the site ID to the default
+SITE_ID = 2 # Set the site ID to the default set to 1 for sqlite for oauth and 2 for mysql oauth
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # Default
     'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
@@ -155,8 +178,8 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 SOCIALACCOUNT_LOGIN_ON_GET=True
 SOCIALACCOUNT_AUTO_SIGNUP = True
 ACCOUNT_USERNAME_REQUIRED = False

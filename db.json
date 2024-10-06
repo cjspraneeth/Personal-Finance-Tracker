@@ -1,0 +1,1104 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "finance",
+        "model": "transaction"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sites",
+        "model": "site"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "account",
+        "model": "emailaddress"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "account",
+        "model": "emailconfirmation"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialaccount"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialapp"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "socialaccount",
+        "model": "socialtoken"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kqeaq5xmn0k4yn5md2t0u0rwltc4t6hc",
+    "fields": {
+        "session_data": "e30:1sxBfp:ZVxPFjKFwdGDodS0QKlGLv3QlzFRh6Y4zXC0pVlRNq0",
+        "expire_date": "2024-10-19T20:46:45.770Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "m5w42hdza2j19b4embw640r5egfd9e9a",
+    "fields": {
+        "session_data": "e30:1sxBf7:bdHNW4i-ebhW83hDUTIlahO6sSI33O7R-f4g0NKq7pE",
+        "expire_date": "2024-10-19T20:46:01.505Z"
+    }
+},
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "http://127.0.0.1:8000",
+        "name": "http://127.0.0.1:8000"
+    }
+},
+{
+    "model": "socialaccount.socialapp",
+    "pk": 1,
+    "fields": {
+        "provider": "google",
+        "provider_id": "",
+        "name": "google",
+        "client_id": "729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com",
+        "secret": "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",
+        "key": "",
+        "settings": {},
+        "sites": [
+            [
+                "http://127.0.0.1:8000"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add transaction",
+        "content_type": [
+            "finance",
+            "transaction"
+        ],
+        "codename": "add_transaction"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change transaction",
+        "content_type": [
+            "finance",
+            "transaction"
+        ],
+        "codename": "change_transaction"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete transaction",
+        "content_type": [
+            "finance",
+            "transaction"
+        ],
+        "codename": "delete_transaction"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view transaction",
+        "content_type": [
+            "finance",
+            "transaction"
+        ],
+        "codename": "view_transaction"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "add_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "change_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "delete_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "view_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "add_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "change_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "delete_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view email address",
+        "content_type": [
+            "account",
+            "emailaddress"
+        ],
+        "codename": "view_emailaddress"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "add_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "change_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "delete_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view email confirmation",
+        "content_type": [
+            "account",
+            "emailconfirmation"
+        ],
+        "codename": "view_emailconfirmation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "add_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "change_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "delete_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view social account",
+        "content_type": [
+            "socialaccount",
+            "socialaccount"
+        ],
+        "codename": "view_socialaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "add_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "change_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "delete_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view social application",
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "codename": "view_socialapp"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "add_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "change_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "delete_socialtoken"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view social application token",
+        "content_type": [
+            "socialaccount",
+            "socialtoken"
+        ],
+        "codename": "view_socialtoken"
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$5i8AnHRbL7DeypBK9Ts3dL$VvkoryWf9bS8HbpRU+S9f1thq9AZnsC3hLCKvXiFGDc=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "abc",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T11:52:40.220Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$wzi1FRJd2oNVZZOREgiGKE$PMx+5I1uyVfgfchhT8/9mtAAH8eL+3/tvuJUnbH9Lqw=",
+        "last_login": "2024-10-05T11:57:57.925Z",
+        "is_superuser": false,
+        "username": "gundu",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T11:57:57.615Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$Ume50Ld0ATi0rzRPBU9DDP$ACw23rIjHr1QAOwPM3MAhrd/EOEKgA2DUZMTsShiPJA=",
+        "last_login": "2024-10-06T12:46:37.430Z",
+        "is_superuser": false,
+        "username": "sathyapraneeth",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T12:13:10.024Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$WqOgj8PioT3jodAiJBAS8L$wBLj2HRPsPXxqJ/tfsZVNaKSEJYXlsDwismrxmn7syk=",
+        "last_login": "2024-10-06T17:31:23.727Z",
+        "is_superuser": false,
+        "username": "lucky",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T12:24:16.987Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$JbHlNqg6yoXcLKgzBMHyuA$MN7wcnvtAW3KRcTHNpi+mk4W1SDynoYFHvnwCH24jl4=",
+        "last_login": "2024-10-06T17:32:07.038Z",
+        "is_superuser": true,
+        "username": "cjspraneeth",
+        "first_name": "",
+        "last_name": "",
+        "email": "praneethchamala@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-10-05T20:12:10.010Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "!A5xQy5Yqk8jZ3128aMbQ3PHv5eZuMTuIsISaawZD",
+        "last_login": "2024-10-06T04:10:44.750Z",
+        "is_superuser": false,
+        "username": "praneeth",
+        "first_name": "Praneeth",
+        "last_name": "Chamala",
+        "email": "sathya.pranetha@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T20:30:22.470Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "!FbBH2Rv7evTDhwR3JPeTa6dJIpYf7zXGMyJIbA8X",
+        "last_login": "2024-10-05T20:34:15.431Z",
+        "is_superuser": false,
+        "username": "chamala",
+        "first_name": "Chamala",
+        "last_name": "Jaya Sathya Praneeth",
+        "email": "chamala.j.s.praneeth@kgpian.iitkgp.ac.in",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T20:34:15.388Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$ptK2uddfEYBOqRAwFANOfy$h2pxbnNsxnZqJM+dIolesyccyaK6I2okWB3btW0obg0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "hello",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T20:46:01.217Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$5A2ZE9KlGXbOODMvvy3hWV$peaxMTnlJVKkZm/kTkw84bSFbQ6tDPFI6mK19pXY2Nw=",
+        "last_login": "2024-10-05T20:50:23.961Z",
+        "is_superuser": false,
+        "username": "abcd",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T20:46:45.487Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$870000$B2YMFQRFsGhpSnvDPsFSXF$GYzyXwn+1KSeg+PI4XSCS2cNcfWYujn517Ap9O9uXPw=",
+        "last_login": "2024-10-05T20:50:59.366Z",
+        "is_superuser": false,
+        "username": "fun",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-10-05T20:50:59.075Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "finance.transaction",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "sathyapraneeth"
+        ],
+        "date": "2003-03-27",
+        "amount": "501.00",
+        "description": "got the salary of 500 dollars",
+        "transaction_type": "income",
+        "category": "salary",
+        "receipt": ""
+    }
+},
+{
+    "model": "finance.transaction",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "lucky"
+        ],
+        "date": "2003-03-30",
+        "amount": "1000.00",
+        "description": "Got my salary",
+        "transaction_type": "income",
+        "category": "salary",
+        "receipt": ""
+    }
+},
+{
+    "model": "finance.transaction",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "lucky"
+        ],
+        "date": "2003-03-31",
+        "amount": "100.00",
+        "description": "paid wifi bill",
+        "transaction_type": "expense",
+        "category": "utility bills",
+        "receipt": "receipts/bill_sample_-_Copy_FoomTyt.png"
+    }
+},
+{
+    "model": "finance.transaction",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "sathyapraneeth"
+        ],
+        "date": "2003-04-25",
+        "amount": "10.00",
+        "description": "chocolate",
+        "transaction_type": "expense",
+        "category": "grocery",
+        "receipt": ""
+    }
+},
+{
+    "model": "finance.transaction",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "lucky"
+        ],
+        "date": "2003-04-26",
+        "amount": "10.00",
+        "description": "paid pizza bills",
+        "transaction_type": "expense",
+        "category": "Food",
+        "receipt": "receipts/bill_sample.png"
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "praneeth"
+        ],
+        "email": "sathya.pranetha@gmail.com",
+        "verified": true,
+        "primary": true
+    }
+},
+{
+    "model": "account.emailaddress",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "chamala"
+        ],
+        "email": "chamala.j.s.praneeth@kgpian.iitkgp.ac.in",
+        "verified": true,
+        "primary": true
+    }
+},
+{
+    "model": "socialaccount.socialaccount",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "praneeth"
+        ],
+        "provider": "google",
+        "uid": "114758260502276674540",
+        "last_login": "2024-10-06T04:10:44.729Z",
+        "date_joined": "2024-10-05T20:30:22.493Z",
+        "extra_data": {
+            "iss": "https://accounts.google.com",
+            "azp": "729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com",
+            "aud": "729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com",
+            "sub": "114758260502276674540",
+            "email": "sathya.pranetha@gmail.com",
+            "email_verified": true,
+            "at_hash": "ArjByBU6dinPpNDSFbkkEg",
+            "name": "Praneeth Chamala",
+            "picture": "https://lh3.googleusercontent.com/a/ACg8ocKXKExhE0TKYKq09h80zhcK16NCq0rZKBAxY-D6tdeEHyrlew=s96-c",
+            "given_name": "Praneeth",
+            "family_name": "Chamala",
+            "iat": 1728187844,
+            "exp": 1728191444
+        }
+    }
+},
+{
+    "model": "socialaccount.socialaccount",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "chamala"
+        ],
+        "provider": "google",
+        "uid": "113810520992975735518",
+        "last_login": "2024-10-05T20:34:15.409Z",
+        "date_joined": "2024-10-05T20:34:15.409Z",
+        "extra_data": {
+            "iss": "https://accounts.google.com",
+            "azp": "729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com",
+            "aud": "729139205660-r4h0mj8rp1hgmhk8nsbg7kde66fallrm.apps.googleusercontent.com",
+            "sub": "113810520992975735518",
+            "hd": "kgpian.iitkgp.ac.in",
+            "email": "chamala.j.s.praneeth@kgpian.iitkgp.ac.in",
+            "email_verified": true,
+            "at_hash": "l8rKSzjbWVPYRlY6ILKrkQ",
+            "name": "Chamala Jaya Sathya Praneeth",
+            "picture": "https://lh3.googleusercontent.com/a/ACg8ocIBJRV5o_fOut5wzYPHB7aylVopVLZm5ExBT21nGBofkGgFHw=s96-c",
+            "given_name": "Chamala",
+            "family_name": "Jaya Sathya Praneeth",
+            "iat": 1728160456,
+            "exp": 1728164056
+        }
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2024-10-05T20:15:57.501Z",
+        "user": [
+            "cjspraneeth"
+        ],
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "object_id": "1",
+        "object_repr": "http://127.0.0.1:8000",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Domain name\", \"Display name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2024-10-05T20:18:30.883Z",
+        "user": [
+            "cjspraneeth"
+        ],
+        "content_type": [
+            "socialaccount",
+            "socialapp"
+        ],
+        "object_id": "1",
+        "object_repr": "google",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2024-10-05T20:30:06.457Z",
+        "user": [
+            "cjspraneeth"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "praneeth",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2024-10-05T20:30:06.457Z",
+        "user": [
+            "cjspraneeth"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "7",
+        "object_repr": "praneeth0",
+        "action_flag": 3,
+        "change_message": ""
+    }
+}
+]
