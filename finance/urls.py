@@ -2,6 +2,7 @@
 from django.urls import path,include
 from .views import register, user_login, logout_view, dashboard, add_transaction, edit_transaction, delete_transaction, list_transactions, monthly_report
 urlpatterns = [
+    path('', user_login, name='default'),
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
     path('logout/', logout_view, name='logout'),
