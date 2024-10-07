@@ -79,7 +79,7 @@
             {% for transaction in transactions %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{ transaction.date }}: {{ transaction.description }} - {{ transaction.amount }} 
-                    ({{ transaction.transaction_type }})
+                    ({{ transaction.transaction_type }}) - Category: {{ transaction.category }}
                     <div>
                         <!-- Display receipt link if exists -->
                         {% if transaction.receipt %}
