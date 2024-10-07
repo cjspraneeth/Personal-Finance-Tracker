@@ -103,7 +103,7 @@ DATABASES = {
         'PORT': env('MYSQL_PORT'),
         'OPTIONS': {
             'ssl': {
-                'ca':  BASE_DIR / 'cert/DigiCertGlobalRootG2.crt.pem',  # Path to the SSL certificate
+                'ca':  os.path.join(BASE_DIR, 'cert', 'DigiCertGlobalRootCA.crt.pem'),  # Path to the SSL certificate  ,
             },
         },
 
