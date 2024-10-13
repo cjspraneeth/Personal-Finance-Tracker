@@ -1,0 +1,70 @@
+{% load custom_filters %}  <!-- Load the custom filter at the top -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Goals</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .progress-bar {
+            min-width: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Budget Goals</h1>
+        <a href="{% url 'add_budget_goal' %}" class="btn btn-primary mb-3">Add New Budget Goal</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Progress</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for goal in budget_goals %}
+                <tr>
+                    <td>{{ goal.category }}</td>
+                    <td>
+                        <div class="progress" style="height: 30px;">
+                            <div class="progress-bar" role="progressbar"
+                                 style="width: {{ progress|get_item:goal.category|get_item:'percentage'|floatformat:1 }}%; background-color: #218838;"
+                                 aria-valuenow="{{ progress|get_item:goal.category|get_item:'percentage'|floatformat:1 }}"
+                                 aria-valuemin="0" aria-valuemax="100"
+                                 data-toggle="tooltip"
+                                 title="Spent: {{ progress|get_item:goal.category|get_item:'spent' }} Remaining: {{ progress|get_item:goal.category|get_item:'remaining' }} Goal : {{ progress|get_item:goal.category|get_item:'goal' }}">
+                                {{ progress|get_item:goal.category|get_item:'percentage'|floatformat:1 }}%
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="{% url 'edit_budget_goal' goal.id %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'delete_budget_goal' goal.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No budget goals found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js for tooltips -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>

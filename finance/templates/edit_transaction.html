@@ -1,8 +1,87 @@
 <!-- finance/templates/edit_transaction.html -->
 <h1>Edit Transaction</h1>
+
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}  <!-- Render the form -->
+    
+    <!-- Render the form except the category field -->
+    <div>
+        {{ form.transaction_type.label_tag }} {{ form.transaction_type }}
+    </div>
+    
+    <!-- Render the rest of the form fields, but skip the category -->
+    <div>
+        {{ form.date.label_tag }} {{ form.date }}
+    </div>
+    <div>
+        {{ form.amount.label_tag }} {{ form.amount }}
+    </div>
+    <div>
+        {{ form.description.label_tag }} {{ form.description }}
+    </div>
+
+    <!-- Category Field (will be dynamically updated by JavaScript) -->
+    <div id="category_field">
+        {{ form.category.label_tag }} {{ form.category }}
+    </div>
+
     <button type="submit">Save Changes</button>
 </form>
+
 <a href="{% url 'dashboard' %}">Cancel</a>
+
+<!-- JavaScript for dynamically changing the category field -->
+<script>
+    function toggleCategoryField() {
+        // Get the selected transaction type value
+        var transactionType = document.getElementById("id_transaction_type").value;
+        
+        // Get the current category field div
+        var categoryFieldDiv = document.getElementById("category_field");
+        
+        // Get the current category value (pre-filled value)
+        var currentCategoryValue = "{{ form.category.value|escapejs }}";
+
+        if (transactionType === "Expense") {
+            // Create the dropdown for expense categories
+            var dropdownHTML = `
+                <label for="id_category">Category</label>
+                <select name="category" id="id_category">
+                    <option value="Rent">Rent</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Food">Food</option>
+                    <option value="Other">Other</option>
+                    <!-- Add more categories if needed -->
+                </select>`;
+
+            // Update the div with the dropdown
+            categoryFieldDiv.innerHTML = dropdownHTML;
+
+            // Set the dropdown's value to the current category if it matches any option
+            var dropdown = document.getElementById("id_category");
+            for (var i = 0; i < dropdown.options.length; i++) {
+                if (dropdown.options[i].value === currentCategoryValue) {
+                    dropdown.options[i].selected = true;
+                    break;
+                }
+            }
+        } else {
+            // Create the text input for income categories
+            var inputHTML = `
+                <label for="id_category">Category</label>
+                <input type="text" name="category" id="id_category" placeholder="Enter category" value="${currentCategoryValue}">
+            `;
+
+            // Update the div with the text input
+            categoryFieldDiv.innerHTML = inputHTML;
+        }
+    }
+
+    // Attach an event listener to the transaction type field
+    document.getElementById("id_transaction_type").addEventListener("change", toggleCategoryField);
+
+    // Call the function on page load to set the correct field
+    window.onload = toggleCategoryField;
+</script>

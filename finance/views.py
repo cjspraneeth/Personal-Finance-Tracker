@@ -141,3 +141,68 @@ def monthly_report(request):
     }
     
     return render(request, 'monthly_report.html', context)
+
+# Budgetting
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import BudgetGoal, Transaction
+from .forms import BudgetGoalForm
+
+@login_required
+def budget_goals(request):
+    budget_goals = BudgetGoal.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(user=request.user, transaction_type='Expense')
+
+    # Calculate the total spent per category
+    spent_per_category = transactions.values('category').annotate(total_spent=Sum('amount'))
+
+    # Create a dictionary to track progress for each goal
+    progress = {}
+    for goal in budget_goals:
+        spent = next((item['total_spent'] for item in spent_per_category if item['category'] == goal.category), 0)
+        progress[goal.category] = {
+            'goal': goal.goal_amount,
+            'spent': spent,
+            'remaining': max(goal.goal_amount - spent, 0),
+            'percentage': min((spent / goal.goal_amount) * 100, 100) if goal.goal_amount > 0 else 0
+        }
+
+    context = {
+        'budget_goals': budget_goals,
+        'progress': progress,
+    }
+    return render(request, 'budget_goals.html', context)
+
+@login_required
+def add_budget_goal(request):
+    if request.method == 'POST':
+        form = BudgetGoalForm(request.POST)
+        if form.is_valid():
+            budget_goal = form.save(commit=False)
+            budget_goal.user = request.user
+            budget_goal.save()
+            return redirect('budget_goals')
+    else:
+        form = BudgetGoalForm()
+    return render(request, 'add_budget_goal.html', {'form': form})
+
+@login_required
+def edit_budget_goal(request, goal_id):
+    budget_goal = get_object_or_404(BudgetGoal, id=goal_id, user=request.user)
+    if request.method == 'POST':
+        form = BudgetGoalForm(request.POST, instance=budget_goal)
+        if form.is_valid():
+            form.save()
+            return redirect('budget_goals')
+    else:
+        form = BudgetGoalForm(instance=budget_goal)
+    return render(request, 'edit_budget_goal.html', {'form': form})
+
+@login_required
+def delete_budget_goal(request, goal_id):
+    budget_goal = get_object_or_404(BudgetGoal, id=goal_id, user=request.user)
+    if request.method == 'POST':
+        budget_goal.delete()
+        return redirect('budget_goals')
+    return render(request, 'delete_budget_goal.html', {'budget_goal': budget_goal})
