@@ -93,29 +93,29 @@ WSGI_APPLICATION = 'finance_tracker_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('MYSQL_DB_NAME') ,  # The name of your database
-        'USER':  env('MYSQL_USER'),  # Your MySQL admin username
-        'PASSWORD': env('MYSQL_PASSWORD'),  # Your MySQL password
-        'HOST':  env('MYSQL_HOST'), # Your MySQL server name
-        'PORT': env('MYSQL_PORT'),
-        'OPTIONS': {
-            'ssl': {
-                'ca':  os.path.join(BASE_DIR, 'cert', 'DigiCertGlobalRootCA.crt.pem'),  # Path to the SSL certificate  ,
-            },
-        },
-
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',  # Make sure this path is correct
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': env('MYSQL_DB_NAME') ,  # The name of your database
+#         'USER':  env('MYSQL_USER'),  # Your MySQL admin username
+#         'PASSWORD': env('MYSQL_PASSWORD'),  # Your MySQL password
+#         'HOST':  env('MYSQL_HOST'), # Your MySQL server name
+#         'PORT': env('MYSQL_PORT'),
+#         'OPTIONS': {
+#             'ssl': {
+#                 'ca':  os.path.join(BASE_DIR, 'cert', 'DigiCertGlobalRootCA.crt.pem'),  # Path to the SSL certificate  ,
+#             },
+#         },
+
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Make sure this path is correct
+    }
+}
 
 
 
