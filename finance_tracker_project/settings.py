@@ -165,7 +165,7 @@ LOGIN_URL = '/login/'  # Redirect here if user is not authenticated
 LOGIN_REDIRECT_URL = '/dashboard/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/'  # Redirect after logout
 
-SITE_ID = 2 # Set the site ID to the default set to 1 for sqlite for oauth and 2 for mysql oauth
+SITE_ID = 1 # Set the site ID to the default set to 1 for sqlite for oauth and 2 for mysql oauth
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # Default
     'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
