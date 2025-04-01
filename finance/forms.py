@@ -15,6 +15,7 @@ class TransactionForm(forms.ModelForm):
         ('Other', 'Other'),
         # Add more expense categories as needed
     ]
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))  # Enables date picker
     def __init__(self, *args, **kwargs):
         super(TransactionForm, self).__init__(*args, **kwargs)
 
